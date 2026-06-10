@@ -1,5 +1,7 @@
 # DnB Games
 
+🎮 公開URL: https://junron20.github.io/DnBGames/
+
 Dual N-Back をはじめとする8つのモードでワーキングメモリーを鍛えるブラウザゲーム。
 
 Next.js 14 (App Router) / TypeScript / Tailwind CSS
