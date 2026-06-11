@@ -159,7 +159,9 @@ export function useNBackGame(mode: GameMode, intervalMs: number): UseNBackGame {
 
     const trial = state.trials[state.index];
     if (mode.channels.some((c) => c.id === "audio")) {
-      speak(trial.values["audio"]);
+      // 大文字の単独アルファベットは「Capital C」のように読み上げる
+      // 端末があるため、小文字にして渡す
+      speak(trial.values["audio"].toLowerCase());
     }
 
     const stimMs = Math.min(700, Math.round(intervalMs * 0.3));
