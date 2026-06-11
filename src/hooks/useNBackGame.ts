@@ -5,7 +5,7 @@ import type { GameMode, SessionResult, TrialData } from "@/lib/nback/types";
 import { generateTrials } from "@/lib/nback/sequence";
 import { scoreSession } from "@/lib/nback/scoring";
 import { saveSession } from "@/lib/nback/storage";
-import { cancelSpeech, speak } from "@/lib/nback/speech";
+import { cancelSpeech, speak, unlockSpeech } from "@/lib/nback/speech";
 
 export type Phase = "idle" | "countdown" | "running" | "finished";
 export type Feedback = "hit" | "fa";
@@ -127,6 +127,7 @@ export function useNBackGame(mode: GameMode, intervalMs: number): UseNBackGame {
 
   const start = useCallback(
     (n: number) => {
+      unlockSpeech();
       cancelSpeech();
       const trialCount = mode.baseTrials + n;
       dispatch({ type: "START", trials: generateTrials(mode, n, trialCount), n });
